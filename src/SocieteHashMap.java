@@ -2,85 +2,57 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SocieteHashMap implements InterfaceSociete {
-    private HashMap<Employe, Departement> employeDepartementMap;
+    private HashMap<Employe, Departement> map;
 
     public SocieteHashMap() {
-        this.employeDepartementMap = new HashMap<>();
+        map = new HashMap<>();
     }
 
-    @Override
     public void ajouterEmployeDepartement(Employe e, Departement d) {
-        if (e != null && d != null) {
-            employeDepartementMap.put(e, d);
-            System.out.println("Employé ajouté avec succès au département.");
-        } else {
-            System.out.println("Erreur : L'employé ou le département est null.");
-        }
+        map.put(e, d);
+        System.out.println("Employe ajoute");
     }
 
-    @Override
     public void supprimerEmploye(Employe e) {
-        if (employeDepartementMap.remove(e) != null) {
-            System.out.println("Employé supprimé avec succès.");
-        } else {
-            System.out.println("Employé non trouvé.");
-        }
+        map.remove(e);
+        System.out.println("Employe supprime");
     }
 
-    @Override
     public void afficherLesEmployesLeursDepartements() {
-        if (employeDepartementMap.isEmpty()) {
-            System.out.println("Aucun employé dans la société.");
-            return;
-        }
-        System.out.println("=== Liste des employés et leurs départements ===");
-        for (Map.Entry<Employe, Departement> entry : employeDepartementMap.entrySet()) {
-            System.out.println("Employé: " + entry.getKey() + " -> Département: " + entry.getValue());
+        System.out.println("Liste des employes et departements:");
+        for (Map.Entry<Employe, Departement> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
         }
     }
 
-    @Override
     public void afficherLesEmployes() {
-        if (employeDepartementMap.isEmpty()) {
-            System.out.println("Aucun employé dans la société.");
-            return;
-        }
-        System.out.println("=== Liste des employés ===");
-        for (Employe employe : employeDepartementMap.keySet()) {
-            System.out.println(employe);
+        System.out.println("Liste des employes:");
+        for (Employe e : map.keySet()) {
+            System.out.println(e);
         }
     }
 
-    @Override
     public void afficherLesDepartements() {
-        if (employeDepartementMap.isEmpty()) {
-            System.out.println("Aucun département dans la société.");
-            return;
-        }
-        System.out.println("=== Liste des départements ===");
-        for (Departement departement : employeDepartementMap.values()) {
-            System.out.println(departement);
+        System.out.println("Liste des departements:");
+        for (Departement d : map.values()) {
+            System.out.println(d);
         }
     }
 
-    @Override
     public void afficherDepartement(Employe e) {
-        Departement departement = employeDepartementMap.get(e);
-        if (departement != null) {
-            System.out.println("Département de l'employé " + e.getNom() + " " + e.getPrenom() + " : " + departement);
+        Departement d = map.get(e);
+        if (d != null) {
+            System.out.println("Departement: " + d);
         } else {
-            System.out.println("Employé non trouvé ou n'appartient à aucun département.");
+            System.out.println("Employe non trouve");
         }
     }
 
-    @Override
     public boolean rechercherEmploye(Employe e) {
-        return employeDepartementMap.containsKey(e);
+        return map.containsKey(e);
     }
 
-    @Override
     public boolean rechercherDepartement(Departement d) {
-        return employeDepartementMap.containsValue(d);
+        return map.containsValue(d);
     }
 }
-

@@ -6,11 +6,9 @@ public class Employe {
     private String nom;
     private String prenom;
 
-    // Constructeur sans paramètre
     public Employe() {
     }
 
-    // Constructeur avec paramètres
     public Employe(String cin, String matricule, String nom, String prenom) {
         this.cin = cin;
         this.matricule = matricule;
@@ -18,7 +16,6 @@ public class Employe {
         this.prenom = prenom;
     }
 
-    // Getters et Setters
     public String getCin() {
         return cin;
     }
@@ -51,30 +48,28 @@ public class Employe {
         this.prenom = prenom;
     }
 
-    // Méthode toString()
-    @Override
     public String toString() {
-        return "Employe{" +
-                "cin='" + cin + '\'' +
-                ", matricule='" + matricule + '\'' +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                '}';
+        return "Employe{" + "cin='" + cin + '\'' + ", matricule='" + matricule + '\'' + ", nom='" + nom + '\'' + ", prenom='" + prenom + '\'' + '}';
     }
 
-    // Méthode equals
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null) return false;
         Employe employe = (Employe) o;
-        return Objects.equals(cin, employe.cin) &&
-                Objects.equals(matricule, employe.matricule);
+        if (cin != null && employe.cin != null) {
+            if (cin.equals(employe.cin)) {
+                return true;
+            }
+        }
+        if (matricule != null && employe.matricule != null) {
+            if (matricule.equals(employe.matricule)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    @Override
     public int hashCode() {
         return Objects.hash(cin, matricule);
     }
 }
-

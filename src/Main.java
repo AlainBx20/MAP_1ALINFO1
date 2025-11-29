@@ -1,54 +1,50 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== Test avec SocieteHashMap ===\n");
 
-        SocieteHashMap societeHashMap = new SocieteHashMap();
+        SocieteHashMap societe1 = new SocieteHashMap();
 
-        Departement dept1 = new Departement("D001", "Informatique");
-        Departement dept2 = new Departement("D002", "Ressources Humaines");
-        Departement dept3 = new Departement("D003", "Comptabilité");
+        Departement d1 = new Departement("D001", "Informatique");
+        Departement d2 = new Departement("D002", "RH");
+        Departement d3 = new Departement("D003", "Compta");
 
-        Employe emp1 = new Employe("12345678", "MAT001", "Ben Ali", "Ahmed");
-        Employe emp2 = new Employe("87654321", "MAT002", "Trabelsi", "Fatma");
-        Employe emp3 = new Employe("11223344", "MAT003", "Jendoubi", "Mohamed");
+        Employe e1 = new Employe("12345678", "MAT001", "Ben Ali", "Mohamed");
+        Employe e2 = new Employe("87654321", "MAT002", "Trabelsi", "Ahmed");
+        Employe e3 = new Employe("11223344", "MAT003", "Jendoubi", "Fatma");
 
-        societeHashMap.ajouterEmployeDepartement(emp1, dept1);
-        societeHashMap.ajouterEmployeDepartement(emp2, dept2);
-        societeHashMap.ajouterEmployeDepartement(emp3, dept1);
-
-        System.out.println();
-        societeHashMap.afficherLesEmployesLeursDepartements();
+        societe1.ajouterEmployeDepartement(e1, d1);
+        societe1.ajouterEmployeDepartement(e2, d2);
+        societe1.ajouterEmployeDepartement(e3, d1);
 
         System.out.println();
-        societeHashMap.afficherLesEmployes();
+        societe1.afficherLesEmployesLeursDepartements();
 
         System.out.println();
-        societeHashMap.afficherLesDepartements();
-
-        System.out.println("\n=== Recherche ===");
-        System.out.println("Recherche emp1: " + societeHashMap.rechercherEmploye(emp1));
-        System.out.println("Recherche dept1: " + societeHashMap.rechercherDepartement(dept1));
+        societe1.afficherLesEmployes();
 
         System.out.println();
-        societeHashMap.afficherDepartement(emp1);
+        System.out.println("Recherche e1: " + societe1.rechercherEmploye(e1));
+        System.out.println("Recherche d1: " + societe1.rechercherDepartement(d1));
 
         System.out.println();
-        societeHashMap.supprimerEmploye(emp2);
-        System.out.println();
-        societeHashMap.afficherLesEmployes();
-
-        System.out.println("\n\n=== Test avec SocieteTreeMap ===\n");
-
-        SocieteTreeMap societeTreeMap = new SocieteTreeMap();
-
-        societeTreeMap.ajouterEmployeDepartement(emp2, dept2);
-        societeTreeMap.ajouterEmployeDepartement(emp1, dept1);
-        societeTreeMap.ajouterEmployeDepartement(emp3, dept1);
+        societe1.afficherDepartement(e1);
 
         System.out.println();
-        societeTreeMap.afficherLesEmployesLeursDepartements();
+        societe1.supprimerEmploye(e2);
 
         System.out.println();
-        societeTreeMap.afficherLesEmployes();
+        System.out.println("Test SocieteTreeMap");
+        System.out.println();
+
+        SocieteTreeMap societe2 = new SocieteTreeMap();
+
+        societe2.ajouterEmployeDepartement(e2, d2);
+        societe2.ajouterEmployeDepartement(e1, d1);
+        societe2.ajouterEmployeDepartement(e3, d1);
+
+        System.out.println();
+        societe2.afficherLesEmployesLeursDepartements();
+
+        System.out.println();
+        societe2.afficherLesEmployes();
     }
 }
