@@ -30,21 +30,5 @@ public class Main {
 
         System.out.println();
         societe1.supprimerEmploye(e2);
-
-        System.out.println();
-        System.out.println("Test SocieteTreeMap");
-        System.out.println();
-
-        SocieteTreeMap societe2 = new SocieteTreeMap();
-
-        societe2.ajouterEmployeDepartement(e2, d2);
-        societe2.ajouterEmployeDepartement(e1, d1);
-        societe2.ajouterEmployeDepartement(e3, d1);
-
-        System.out.println();
-        societe2.afficherLesEmployesLeursDepartements();
-
-        System.out.println();
-        societe2.afficherLesEmployes();
     }
 }
